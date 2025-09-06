@@ -1,0 +1,38 @@
+<%- include("../layout/header", { title: title }) %>
+
+<div class="container mt-4">
+  <% if (success && success.length > 0) { %>
+    <div class="alert alert-success"><%= success %></div>
+  <% } %>
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
+  <h2 class="mb-3">Admin Dashboard</h2>
+  <a href="/admin" class="btn btn-primary mb-3">+ Add New Project</a>
+
+  <% if (projects.length === 0) { %>
+    <p>No projects found. Add your first project!</p>
+  <% } else { %>
+    <div class="row">
+      <% projects.forEach(project => { %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <img src="<%= project.image %>" class="card-img-top" alt="<%= project.title %>" style="height:200px; object-fit:cover;">
+            <div class="card-body">
+              <h5 class="card-title"><%= project.title %></h5>
+              <p class="card-text"><%= project.description.substring(0,100) %>...</p>
+              <p><strong>Tech:</strong> <%= project.tech.join(", ") %></p>
+              <div class="d-flex justify-content-between">
+                <a href="/admin/edit/<%= project._id %>" class="btn btn-sm btn-warning">Edit</a>
+                <a href="/admin/delete/<%= project._id %>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</div>
+
+<%- include("../layout/footer") %>
