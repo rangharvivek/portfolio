@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -39,6 +38,10 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use("/", portfolioRoutes);
+<<<<<<< HEAD
 app.use("/admin", adminRoutes);   // 👈 yeh add karo
 
+=======
+app.use("/admin", adminRoutes);   
+>>>>>>> f1feb12b2b2f098625b3bea266a978adda968b47
 app.listen(PORT, ()=> console.log(`🚀 Server running: http://localhost:${PORT}`));
