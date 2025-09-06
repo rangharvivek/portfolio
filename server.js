@@ -12,24 +12,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-// const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://viveksinghranghar:uBzaSPeRwkM1WdHn@cluster0.z2j6ycw.mongodb.net/portfolio";
-
-// mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(async () => {
-//     console.log("✅ MongoDB connected");
-
-//     // Seed admin if it doesn't exist
-//     const exists = await Admin.findOne({ username: "admin" });
-//     if (!exists) {
-//       const salt = await bcrypt.genSalt(10);
-//       const hashed = await bcrypt.hash("admin123", salt);
-//       await Admin.create({ username: "admin", password: hashed });
-//       console.log("Admin created -> username: admin, password: admin123");
-//     } else {
-//       console.log("Admin already exists");
-//     }
-//   })
-//   .catch(err => console.error("❌ MongoDB connection error:", err));
 
 
 const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://viveksinghranghar:uBzaSPeRwkM1WdHn@cluster0.z2j6ycw.mongodb.net/portfolio";
