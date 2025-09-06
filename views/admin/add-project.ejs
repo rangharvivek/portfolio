@@ -1,24 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title><%= title %></title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-  <div class="container my-5">
-    <a href="/admin/dashboard" class="btn btn-secondary mb-3">← Back</a>
-    <div class="card p-4 shadow-sm">
-      <h4>Add Project</h4>
-      <form action="/admin/add" method="POST" enctype="multipart/form-data">
-        <div class="mb-3"><label>Title</label><input name="title" required class="form-control"></div>
-        <div class="mb-3"><label>Description</label><textarea name="description" required class="form-control" rows="4"></textarea></div>
-        <div class="mb-3"><label>Tech (comma separated)</label><input name="tech" class="form-control" placeholder="Node.js, Express, MongoDB"></div>
-        <div class="mb-3"><label>GitHub Link</label><input name="github" type="url" class="form-control"></div>
-        <div class="mb-3"><label>Demo Link</label><input name="demo" type="url" class="form-control"></div>
-        <div class="mb-3"><label>Image</label><input name="image" type="file" accept="image/*" class="form-control"></div>
-        <button class="btn btn-success">Add Project</button>
-      </form>
+
+<%- include("../layout/header", { title: title }) %>
+
+<div class="container mt-5">
+  <h2>Add New Project</h2>
+
+  <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+  <% if (success && success.length > 0) { %>
+    <div class="alert alert-success"><%= success %></div>
+  <% } %>
+
+  <form action="/admin/add" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label>Title</label>
+      <input type="text" name="title" class="form-control" required>
     </div>
-  </div>
-</body>
-</html>
+
+    <div class="mb-3">
+      <label>Description</label>
+      <textarea name="description" class="form-control" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label>GitHub Link</label>
+      <input type="url" name="github" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>Demo Link</label>
+      <input type="url" name="demo" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>Technologies (comma separated)</label>
+      <input type="text" name="tech" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label>Project Image</label>
+      <input type="file" name="image" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Project</button>
+    <a href="/admin/dashboard" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+
+<%- include("../layout/footer") %>
