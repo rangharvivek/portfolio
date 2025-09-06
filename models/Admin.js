@@ -18,4 +18,5 @@ adminSchema.pre("save", async function (next) {
   }
 });
 
-module.exports = mongoose.model("Admin", adminSchema);
+// Safe model export to avoid OverwriteModelError
+module.exports = mongoose.models.Admin || mongoose.model("Admin", adminSchema);
