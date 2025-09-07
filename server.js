@@ -25,11 +25,13 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+
 app.use(flash());
 
+// Make flash messages available in all views
 app.use((req, res, next) => {
-  res.locals.success = req.flash("success");
-  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success"); // array
+  res.locals.error = req.flash("error");     // array
   res.locals.admin = req.session.admin || null;
   next();
 });

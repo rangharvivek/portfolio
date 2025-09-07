@@ -1,0 +1,14 @@
+<% if (success && success.length > 0) { %>
+  <p class="text-success text-center my-2"><%= success[0] %></p>
+<% } %>
+
+<% if (error && error.length > 0) { %>
+  <p class="text-danger text-center my-2"><%= error[0] %></p>
+<% } %>
+
+<script>
+  setTimeout(() => {
+    const flash = document.querySelectorAll('p.text-success, p.text-danger');
+    flash.forEach(f => f.style.display = 'none');
+  }, 3000);
+</script>
